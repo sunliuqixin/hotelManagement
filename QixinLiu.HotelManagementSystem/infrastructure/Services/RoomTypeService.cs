@@ -58,7 +58,7 @@ namespace Infrastructure.Services
 
         }
 
-        public async Task<bool> EdditRoomType(RoomTypeRequestModel type)
+        public async Task<bool> EditRoomType(RoomTypeRequestModel type)
         {
             if (type != null && type.RTDESC != null)
             {

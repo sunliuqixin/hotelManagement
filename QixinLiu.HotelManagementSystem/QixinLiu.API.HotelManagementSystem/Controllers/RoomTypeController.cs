@@ -52,7 +52,7 @@ namespace QixinLiu.API.HotelManagementSystem.Controllers
         [HttpPut]
         public async Task<IActionResult> EdditRoomType([FromBody]RoomTypeRequestModel roomType)
         {
-            var success = await _roomTypeService.EdditRoomType(roomType);
+            var success = await _roomTypeService.EditRoomType(roomType);
             if (success) return Ok(roomType);
             return BadRequest();
             

@@ -71,21 +71,19 @@ namespace Infrastructure.Services
                 return false;
             }
 
-            var edited = new Booking 
-            {
-                Id = old.Id,
-                RoomNO = booking.RoomNO,
-                CName = booking.CName,
-                Address = booking.Address,
-                Phone = booking.Phone,
-                Email = booking.Email,
-                CheckIn = booking.CheckIn,
-                TotalPersons = booking.TotalPersons,
-                BookingDays = booking.BookingDays,
-                Advance = booking.Advance
-            };
-            var newBooking = await _bookingRepository.UpdateAsync(edited);
-            //if (newBooking == null) return false;
+            old.Id = booking.Id;
+            old.RoomNO = booking.RoomNO;
+            old.CName = booking.CName;
+            old.Address = booking.Address;
+            old.Phone = booking.Phone;
+            old.Email = booking.Email;
+            old.CheckIn = booking.CheckIn;
+            old.TotalPersons = booking.TotalPersons;
+            old.BookingDays = booking.BookingDays;
+            old.Advance = booking.Advance;
+
+            var edited = await _bookingRepository.UpdateAsync(old);
+            if (edited == null) return false;
 
             return true;
         }

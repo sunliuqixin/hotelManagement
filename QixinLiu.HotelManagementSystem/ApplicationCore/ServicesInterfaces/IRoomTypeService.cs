@@ -13,7 +13,7 @@ namespace ApplicationCore.ServicesInterfaces
         Task<bool> AddRoomType(RoomTypeRequestModel type);
 
      
-        Task<bool> EdditRoomType(RoomTypeRequestModel type);
+        Task<bool> EditRoomType(RoomTypeRequestModel type);
 
         Task<bool> DeleteRoomType(int id);
 

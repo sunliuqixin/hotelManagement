@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using ApplicationCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,15 @@ namespace ApplicationCore.ServicesInterfaces
 {
     public interface IServiceService
     {
-        Task AddService(Service service);
+        Task<bool> AddService(ServiceRequestModel service);
 
-        //
-        Task EdditService(Service service);
+        
+        Task<bool> EditService(ServiceRequestModel service);
 
-        Task DeleteService(int id);
+        Task<bool> DeleteService(int id);
 
-        Task<IEnumerable<Service>> ListService();
+        Task<ServiceResponseModel> GetServiceById(int id);
+
+        Task<IEnumerable<ServiceResponseModel>> ListAllServices();
     }
 }

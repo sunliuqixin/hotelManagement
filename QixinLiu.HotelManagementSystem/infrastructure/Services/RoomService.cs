@@ -46,11 +46,11 @@ namespace Infrastructure.Services
             }
         }
 
-        public async Task<RoomRequestModel> GetRoomById(int id) 
+        public async Task<RoomResponseModel> GetRoomById(int id) 
         {
 
             var room = await _roomRepository.GetByIdAsync(id);
-            var model = new RoomRequestModel
+            var model = new RoomResponseModel
             {
                 Id = room.Id,
                 RTCode = room.RTCode,
@@ -103,7 +103,7 @@ namespace Infrastructure.Services
             };
 
             roomDetails.RoomType = 
-                new RoomTypeRequestModel
+                new RoomTypeResponseModel
                 {
                     Id = room.RoomType.Id,
                     RTDESC = room.RoomType.RTDESC,
@@ -113,7 +113,7 @@ namespace Infrastructure.Services
             foreach (var service in room.Services)
             {
                 roomDetails.Services.Add(
-                    new ServiceRequestModel
+                    new ServiceResponseModel
                     {
                         Id = service.Id,
                         RoomNO = service.RoomNO,
@@ -126,7 +126,7 @@ namespace Infrastructure.Services
             foreach (var booking in room.Bookings)
             {
                 roomDetails.Bookings.Add(
-                    new BookingRequestModel
+                    new BookingResponseModel
                     {
                         Id = booking.Id,
                         RoomNO = booking.RoomNO,
@@ -141,18 +141,16 @@ namespace Infrastructure.Services
                     }
                 );
             }
-            
-
             return roomDetails;
         }
 
-        public async Task<IEnumerable<RoomRequestModel>> ListRooms()
+        public async Task<IEnumerable<RoomResponseModel>> ListRooms()
         {
             var rooms = await _roomRepository.ListAllAsync();
-            List<RoomRequestModel> list = new List<RoomRequestModel>();
+            List<RoomResponseModel> list = new List<RoomResponseModel>();
             foreach (var r in rooms)
             {
-                list.Add( new RoomRequestModel
+                list.Add( new RoomResponseModel
                 {
                     Id = r.Id,
                     RTCode = r.RTCode,
@@ -161,9 +159,5 @@ namespace Infrastructure.Services
             }
             return list;
         }
-
-  
-
-        
     }
 }

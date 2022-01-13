@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationCore.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace ApplicationCore.Models
     {
         public ServiceResponseModel()
         {
-            Room = new RoomRequestModel();
+            Room = new RoomResponseModel();
         }
         public int Id { get; set; }
 
@@ -22,6 +23,7 @@ namespace ApplicationCore.Models
 
         public DateTime? ServiceDate { get; set; }
 
-        public RoomRequestModel Room { get; set; }
+        public RoomResponseModel Room { get; set; }
+
     }
 }

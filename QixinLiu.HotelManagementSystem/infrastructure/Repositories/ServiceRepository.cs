@@ -12,7 +12,7 @@ namespace Infrastructure.Repositories
 {
     public class ServiceRepository : EfRepository<Service>, IServiceRepository
     {
-        public ServiceRepository(HMSDbContext hMSDbContext) : base(hMSDbContext)
+        public ServiceRepository(HotelMangageDb hMSDbContext) : base(hMSDbContext)
         {
 
         }

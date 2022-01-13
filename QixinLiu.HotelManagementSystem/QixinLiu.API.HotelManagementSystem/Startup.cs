@@ -45,7 +45,7 @@ namespace QixinLiu.API.HotelManagementSystem
             services.AddScoped<IRoomTypeService, RoomTypeService>();
             services.AddScoped<IServiceService, ServiceService>();
 
-            services.AddDbContext<infrastructure.Data.HMSDbContext>(
+            services.AddDbContext<HotelMangageDb>(
                 options => options.UseSqlServer(
                     Configuration.GetConnectionString
                     ("HotelManageSystemDbConnection"))

@@ -10,7 +10,7 @@ namespace ApplicationCore.Models
     {
         public RoomTypeResponseModel()
         {
-            Rooms = new List<RoomRequestModel>();
+            Rooms = new List<RoomResponseModel>();
         }
         public int Id { get; set; }
 
@@ -18,6 +18,6 @@ namespace ApplicationCore.Models
 
         public decimal? Rent { get; set; }
 
-        public List<RoomRequestModel> Rooms { get; set; }
+        public List<RoomResponseModel> Rooms { get; set; }
     }
 }

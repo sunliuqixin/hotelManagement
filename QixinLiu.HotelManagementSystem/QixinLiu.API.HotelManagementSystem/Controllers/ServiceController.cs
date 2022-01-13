@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ApplicationCore.Entities;
 using infrastructure.Data;
+using ApplicationCore.ServicesInterfaces;
+using ApplicationCore.Models;
 
 namespace QixinLiu.API.HotelManagementSystem.Controllers
 {
@@ -14,95 +16,68 @@ namespace QixinLiu.API.HotelManagementSystem.Controllers
     [ApiController]
     public class ServiceController : ControllerBase
     {
-        private readonly HMSDbContext _context;
+        private readonly IServiceService _serviceService;
 
-        public ServiceController(HMSDbContext context)
+        public ServiceController(IServiceService serviceService)
         {
-            _context = context;
+            _serviceService = serviceService;
         }
 
         // GET: api/Service
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Service>>> GetServices()
+        public async Task<IActionResult> ListAllServices()
         {
-            return await _context.Services.ToListAsync();
+            var services = await _serviceService.ListAllServices();
+            return Ok(services);
         }
 
-        // GET: api/Service/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Service>> GetService(int id)
+        // GET: api/Service
+        [HttpGet]
+        [Route("GetService")]
+        public async Task<IActionResult> GetService([FromQuery]int id)
         {
-            var service = await _context.Services.FindAsync(id);
+            var service = await _serviceService.GetServiceById(id);
 
             if (service == null)
             {
                 return NotFound();
             }
 
-            return service;
+            return Ok(service);
         }
 
         // PUT: api/Service/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutService(int id, Service service)
+        [HttpPut]
+        public async Task<IActionResult> PutService([FromQuery] int id, [FromBody]ServiceRequestModel model)
         {
-            if (id != service.Id)
-            {
-                return BadRequest();
-            }
 
-            _context.Entry(service).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ServiceExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            bool success = await _serviceService.EditService(model);
 
-            return NoContent();
+            if (success) return Ok();
+
+            return BadRequest("Edit Failed!");
         }
 
         // POST: api/Service
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Service>> PostService(Service service)
+        public async Task<IActionResult> PostService([FromBody] ServiceRequestModel model)
         {
-            _context.Services.Add(service);
-            await _context.SaveChangesAsync();
+            bool success = await _serviceService.AddService(model);
+            if (success) return Ok();
 
-            return CreatedAtAction("GetService", new { id = service.Id }, service);
+            return BadRequest("Add Failed!");
         }
 
         // DELETE: api/Service/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteService(int id)
+        [HttpDelete]
+        public async Task<IActionResult> DeleteService([FromQuery] int id)
         {
-            var service = await _context.Services.FindAsync(id);
-            if (service == null)
-            {
-                return NotFound();
-            }
+            bool success = await _serviceService.DeleteService(id);
+            if (success) return Ok();
 
-            _context.Services.Remove(service);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return BadRequest("Delete Failed!");
         }
 
-        private bool ServiceExists(int id)
-        {
-            return _context.Services.Any(e => e.Id == id);
-        }
     }
 }

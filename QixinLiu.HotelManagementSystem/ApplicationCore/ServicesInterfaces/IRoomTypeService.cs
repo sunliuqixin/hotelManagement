@@ -17,8 +17,8 @@ namespace ApplicationCore.ServicesInterfaces
 
         Task<bool> DeleteRoomType(int id);
 
-        Task<IEnumerable<RoomTypeRequestModel>> ListRoomTypes();
+        Task<IEnumerable<RoomTypeResponseModel>> ListRoomTypes();
 
-        Task<RoomTypeRequestModel> GetRoomTypeById(int id);
+        Task<RoomTypeResponseModel> GetRoomTypeById(int id);
     }
 }

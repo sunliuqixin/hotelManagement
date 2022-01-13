@@ -9,7 +9,7 @@ using infrastructure.Data;
 
 namespace infrastructure.Migrations
 {
-    [DbContext(typeof(HMSDbContext))]
+    [DbContext(typeof(HotelMangageDb))]
     [Migration("20211117154634_intialCreate")]
     partial class intialCreate
     {

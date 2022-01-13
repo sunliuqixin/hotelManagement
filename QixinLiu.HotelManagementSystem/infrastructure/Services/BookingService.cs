@@ -24,10 +24,11 @@ namespace Infrastructure.Services
 
         public async Task<bool> AddBooking(BookingRequestModel booking)
         {
-            if(booking == null) return false;
- 
+            if (booking == null) return false;
+
             var newBooking = new Booking
             {
+                Id = booking.Id,
                 RoomNO = booking.RoomNO,
                 CName = booking.CName,
                 Address = booking.Address,
@@ -60,81 +61,82 @@ namespace Infrastructure.Services
             return true;
         }
 
-        public async Task<bool> EditBooking(BookingRequestModel booking)
+        public async Task<bool> EditBooking(BookingRequestModel model)
         {
-            if (booking == null) return false;
+            if (model == null) return false;
 
-            var old = await _bookingRepository.GetByIdAsync(booking.Id);
-            if (old == null)
+            var original = await _bookingRepository.GetByIdAsync(model.Id);
+            if (original == null)
             {
-                Console.WriteLine($"ID : {booking.Id} does not exist!");
+                Console.WriteLine($"ID : {model.Id} does not exist!");
                 return false;
             }
 
-            old.Id = booking.Id;
-            old.RoomNO = booking.RoomNO;
-            old.CName = booking.CName;
-            old.Address = booking.Address;
-            old.Phone = booking.Phone;
-            old.Email = booking.Email;
-            old.CheckIn = booking.CheckIn;
-            old.TotalPersons = booking.TotalPersons;
-            old.BookingDays = booking.BookingDays;
-            old.Advance = booking.Advance;
+            original.Id = model.Id;
+            original.RoomNO = model.RoomNO;
+            original.CName = model.CName;
+            original.Address = model.Address;
+            original.Phone = model.Phone;
+            original.Email = model.Email;
+            original.CheckIn = model.CheckIn;
+            original.TotalPersons = model.TotalPersons;
+            original.BookingDays = model.BookingDays;
+            original.Advance = model.Advance;
 
-            var edited = await _bookingRepository.UpdateAsync(old);
-            if (edited == null) return false;
+            var edited = await _bookingRepository.UpdateAsync(original);
+            if (edited == null)
+            {
+                Console.WriteLine("Update Failed!");
+                return false;
+            }
 
             return true;
         }
 
-        public async Task<BookingRequestModel> GetBookingById(int id)
+        public async Task<BookingResponseModel> GetBookingById(int id)
         {
             var booking = await _bookingRepository.GetByIdAsync(id);
             if (booking != null)
             {
-                var model = new BookingRequestModel
-                {
-                    Id = booking.Id,
-                    RoomNO = booking.RoomNO,
-                    CName = booking.CName,
-                    Address = booking.Address,
-                    Phone = booking.Phone,
-                    Email = booking.Email,
-                    CheckIn = booking.CheckIn,
-                    TotalPersons = booking.TotalPersons,
-                    BookingDays = booking.BookingDays,
-                    Advance = booking.Advance
-                };
-                return model;
+                return (new BookingResponseModel
+                    {
+                        Id = booking.Id,
+                        RoomNO = booking.RoomNO,
+                        CName = booking.CName,
+                        Address = booking.Address,
+                        Phone = booking.Phone,
+                        Email = booking.Email,
+                        CheckIn = booking.CheckIn,
+                        TotalPersons = booking.TotalPersons,
+                        BookingDays = booking.BookingDays,
+                        Advance = booking.Advance
+                    });
             }
             else return null;
         }
 
-        public async Task<IEnumerable<BookingRequestModel>> ListAllBookings()
+        public async Task<IEnumerable<BookingResponseModel>> ListAllBookings()
         {
             var bookings = await _bookingRepository.ListAllAsync();
             if (bookings == null) return null;
 
-            var models = new List<BookingRequestModel>();
+            var models = new List<BookingResponseModel>();
 
             foreach(var booking in bookings)
             {
-                var model = new BookingRequestModel
-                {
-                    Id = booking.Id,
-                    RoomNO = booking.RoomNO,
-                    CName = booking.CName,
-                    Address = booking.Address,
-                    Phone = booking.Phone,
-                    Email = booking.Email,
-                    CheckIn = booking.CheckIn,
-                    TotalPersons = booking.TotalPersons,
-                    BookingDays = booking.BookingDays,
-                    Advance = booking.Advance
-                };
-                
-                models.Add(model);
+                models.Add(new BookingResponseModel
+                    {
+                        Id = booking.Id,
+                        RoomNO = booking.RoomNO,
+                        CName = booking.CName,
+                        Address = booking.Address,
+                        Phone = booking.Phone,
+                        Email = booking.Email,
+                        CheckIn = booking.CheckIn,
+                        TotalPersons = booking.TotalPersons,
+                        BookingDays = booking.BookingDays,
+                        Advance = booking.Advance
+                    });
             }
             return models;
         }

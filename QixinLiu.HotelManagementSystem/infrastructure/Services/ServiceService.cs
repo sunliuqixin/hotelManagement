@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using ApplicationCore.Models;
 using ApplicationCore.RepositoryIntetfaces;
 using ApplicationCore.ServicesInterfaces;
 using System;
@@ -19,26 +20,95 @@ namespace Infrastructure.Services
         }
 
 
-        public async Task AddService(Service service)
+        public async Task<bool> AddService(ServiceRequestModel model)
         {
-            await _serviceRepository.AddAsync(service);
+            if(model != null)
+            {
+                Service newService = new Service
+                {
+
+                    RoomNO = model.RoomNO,
+                    SDESC = model.SDESC,
+                    Amount = model.Amount,
+                    ServiceDate = model.ServiceDate
+                };
+                await _serviceRepository.AddAsync(newService);
+                return true;
+            }
+
+            return false;
+            
         }
 
-        public async Task DeleteService(int id)
+        public async Task<bool> DeleteService(int id)
         {
             var deleteService = await _serviceRepository.GetByIdAsync(id);
+            if (deleteService == null) return false;
+
             await _serviceRepository.DeleteAsync(deleteService);
+            return true;
         }
 
-        public async Task EdditService(Service service)
+        public async Task<bool> EditService(ServiceRequestModel model)
         {
-            await _serviceRepository.UpdateAsync(service);
+            if (model == null) return false;
+            var oldService = await _serviceRepository.GetByIdAsync(model.Id);
+            if (oldService == null) return false;
+
+            oldService.RoomNO = model.RoomNO;
+            oldService.SDESC = model.SDESC;
+            oldService.Amount = model.Amount;
+            oldService.ServiceDate = model.ServiceDate;
+            
+            await _serviceRepository.UpdateAsync(oldService);
+            return true;
         }
 
-        public async Task<IEnumerable<Service>> ListService()
+        public async Task<ServiceResponseModel> GetServiceById(int id)
+        {
+            var service = await _serviceRepository.GetByIdAsync(id);
+            if (service == null) throw new Exception("No such Service ID !");
+
+            var model = new ServiceResponseModel
+            {
+                Id = service.Id,
+                RoomNO = service.RoomNO,
+                SDESC = service.SDESC,
+                Amount = service.Amount,
+                ServiceDate = service.ServiceDate
+            };
+
+            return model;
+        }
+
+        public async Task<IEnumerable<ServiceResponseModel>> ListAllServices()
         {
             var services = await _serviceRepository.ListAllAsync();
-            return services;
+            List<ServiceResponseModel> serviceList = new List<ServiceResponseModel>();
+            foreach (var service in services)
+            {
+                //var model = new ServiceResponseModel
+                //{
+                //    Id = service.Id,
+                //    RoomNO = service.RoomNO,
+                //    SDESC = service.SDESC,
+                //    Amount = service.Amount,
+                //    ServiceDate = service.ServiceDate
+                //};
+                serviceList.Add(
+                    new ServiceResponseModel
+                    {
+                        Id = service.Id,
+                        RoomNO = service.RoomNO,
+                        SDESC = service.SDESC,
+                        Amount = service.Amount,
+                        ServiceDate = service.ServiceDate
+                    }
+                );
+            }
+            return serviceList;
         }
+
+     
     }
 }

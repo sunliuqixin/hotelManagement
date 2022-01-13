@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationCore.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,6 @@ namespace ApplicationCore.Models
     public class BookingRequestModel
     {
         public int Id { get; set; }
-
         public int? RoomNO { get; set; }
 
         public string? CName { get; set; }

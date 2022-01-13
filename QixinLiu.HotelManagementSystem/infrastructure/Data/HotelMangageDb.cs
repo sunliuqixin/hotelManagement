@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace infrastructure.Data
 {
-    public class HMSDbContext: DbContext
+    public class HotelMangageDb: DbContext
     {
-        public HMSDbContext(
-            DbContextOptions<HMSDbContext> options
+        public HotelMangageDb(
+            DbContextOptions<HotelMangageDb> options
             ): base(options)
         {
                 

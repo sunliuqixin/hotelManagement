@@ -14,9 +14,9 @@ namespace Infrastructure.Repositories
     public class EfRepository<T> : IAsyncRepository<T> where T : class
     {
         //protected readonly _dbContext _dbContext;
-        protected readonly HMSDbContext _dbContext;
+        protected readonly HotelMangageDb _dbContext;
 
-        public EfRepository(HMSDbContext dbContext)
+        public EfRepository(HotelMangageDb dbContext)
         {
             _dbContext = dbContext;
         }

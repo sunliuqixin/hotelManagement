@@ -21,7 +21,7 @@ namespace Infrastructure.Repositories
     public class RoomRepository : 
         EfRepository<Room>, IRoomRepository
     {
-        public RoomRepository(HMSDbContext hMSDbContext)
+        public RoomRepository(HotelMangageDb hMSDbContext)
             : base(hMSDbContext)
         {
             

@@ -2,7 +2,6 @@ C:\Antra_Hotel\QixinLiu.HotelManagementSystem\ApplicationCore\bin\Debug\net5.0\A
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\ApplicationCore\bin\Debug\net5.0\ApplicationCore.dll
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\ApplicationCore\bin\Debug\net5.0\ref\ApplicationCore.dll
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\ApplicationCore\bin\Debug\net5.0\ApplicationCore.pdb
-C:\Antra_Hotel\QixinLiu.HotelManagementSystem\ApplicationCore\obj\Debug\net5.0\ApplicationCore.csproj.AssemblyReference.cache
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\ApplicationCore\obj\Debug\net5.0\ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\ApplicationCore\obj\Debug\net5.0\ApplicationCore.AssemblyInfoInputs.cache
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\ApplicationCore\obj\Debug\net5.0\ApplicationCore.AssemblyInfo.cs

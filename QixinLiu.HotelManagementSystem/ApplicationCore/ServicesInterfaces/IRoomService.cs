@@ -17,10 +17,10 @@ namespace ApplicationCore.ServicesInterfaces
         Task<bool> DeleteRoom(int id);
 
 
-        Task<IEnumerable<RoomRequestModel>> ListRooms();
+        Task<IEnumerable<RoomResponseModel>> ListRooms();
 
         Task<RoomResponseModel> GetRoomDetails(int id);
 
-        Task<RoomRequestModel> GetRoomById(int id);
+        Task<RoomResponseModel> GetRoomById(int id);
     }
 }

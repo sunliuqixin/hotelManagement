@@ -16,10 +16,9 @@ namespace ApplicationCore.ServicesInterfaces
 
         Task<bool> DeleteBooking(int id);
 
-        Task<BookingRequestModel> GetBookingById(int id);
+        Task<BookingResponseModel> GetBookingById(int id);
 
-        Task<IEnumerable<BookingRequestModel>> ListAllBookings();
-
+        Task<IEnumerable<BookingResponseModel>> ListAllBookings();
 
     }
 }

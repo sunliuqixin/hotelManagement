@@ -37,8 +37,7 @@ namespace Infrastructure.Services
             }
             else
             {
-                throw new Exception
-                    (" New Room Type Must Contain Vaild Room Type or RTDESC");
+                return false;
 
             }
         }
@@ -53,36 +52,37 @@ namespace Infrastructure.Services
             }
             else
             {
-                throw new Exception($"No Such Room Type ID: {id}.");
+                return false;
             }
 
         }
 
-        public async Task<bool> EditRoomType(RoomTypeRequestModel type)
+        public async Task<bool> EditRoomType(RoomTypeRequestModel model)
         {
-            if (type != null && type.RTDESC != null)
+            if (model != null && model.RTDESC != null)
             {
-                var newType = new RoomType
-                {
-                    RTDESC = type.RTDESC,
-                    Rent = type.Rent
-                };
-                await _roomTypeRepository.UpdateAsync(newType);
+                var editType = await _roomTypeRepository.GetByIdAsync(model.Id);
+                if (editType == null) return false;
+
+                editType.RTDESC = model.RTDESC;
+                editType.Rent = model.Rent;
+                
+                await _roomTypeRepository.UpdateAsync(editType);
                 return true;
             }
             else
             {
-                throw new Exception("Room Type is Incorrect!");
+                return false; 
             }
         }
 
-        public async Task<IEnumerable<RoomTypeRequestModel>> ListRoomTypes()
+        public async Task<IEnumerable<RoomTypeResponseModel>> ListRoomTypes()
         {
             var types = await _roomTypeRepository.ListAllAsync();
-            var list = new List<RoomTypeRequestModel>();
+            var list = new List<RoomTypeResponseModel>();
             foreach (RoomType t in types)
             {
-                var newType = new RoomTypeRequestModel
+                var newType = new RoomTypeResponseModel
                 {
                     Id = t.Id,
                     RTDESC = t.RTDESC,
@@ -94,22 +94,22 @@ namespace Infrastructure.Services
             return list;
         }
 
-        public async Task<RoomTypeRequestModel> GetRoomTypeById(int id)
+        public async Task<RoomTypeResponseModel> GetRoomTypeById(int id)
         {
-            var type = await _roomTypeRepository.GetByIdAsync(id);
-            if (type == null)
+            var roomT = await _roomTypeRepository.GetByIdAsync(id);
+            if (roomT == null)
             {
                 Console.WriteLine($"Invalided ID: {id}");
                 return null;
             }
-            var editedType = new RoomTypeRequestModel
+            var model = new RoomTypeResponseModel
             {
-                Id = type.Id,
-                RTDESC = type.RTDESC,
-                Rent = type.Rent
+                Id = roomT.Id,
+                RTDESC = roomT.RTDESC,
+                Rent = roomT.Rent
             };
 
-            return editedType;
+            return model;
         }
     }
 }

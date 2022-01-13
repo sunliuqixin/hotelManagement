@@ -32,7 +32,10 @@ namespace QixinLiu.API.HotelManagementSystem.Controllers
             {
                 return NotFound();
             }
-            return Ok(rooms);
+            else
+            {
+                return Ok(rooms);
+            }
         }
 
         // GET: api/Rooms/5
@@ -41,28 +44,32 @@ namespace QixinLiu.API.HotelManagementSystem.Controllers
         public async Task<IActionResult> GetRoomDetails(int id)
         {
             var room = await _roomService.GetRoomDetails(id);
-            
+
             if (room == null)
             {
                 return NotFound();
             }
-
-            return Ok(room);
+            else
+            {
+                return Ok(room);
+            }
+            
         }
 
         // PUT: api/Rooms/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut]
-        public async Task<IActionResult> EditRoom([FromBody]RoomRequestModel requestModel)
+        public async Task<IActionResult> EditRoom([FromBody]RoomRequestModel model)
         {
-            
-            if(await _roomService.EditRoom(requestModel))
+            bool sucess = await _roomService.EditRoom(model);
+            if (sucess)
             {
-                return Ok(requestModel);
+                return Ok(model);
             }
-
-            return BadRequest();
-            
+            else
+            {
+                return BadRequest("Edit Failed");
+            }
         }
 
         // POST: api/Rooms
@@ -70,19 +77,27 @@ namespace QixinLiu.API.HotelManagementSystem.Controllers
 
         [HttpPost]
         
-        public async Task<IActionResult> AddRoom(RoomRequestModel roomModel)
+        public async Task<IActionResult> AddRoom([FromBody] RoomRequestModel model)
         {
-            
-            var sucess = await _roomService.AddRoom(roomModel);
-            if(sucess) return Ok(roomModel);
-            return BadRequest();
+            bool sucess = await _roomService.AddRoom(model);
+            if (sucess)
+            {
+                return Ok(model);
+            }
+            else
+            {
+                return BadRequest("Add Failed");
+            }
         }
 
         // DELETE: api/Rooms/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRoom(int id)
         {
-            if (await _roomService.DeleteRoom(id))
+
+            bool sucess = await _roomService.DeleteRoom(id);
+           
+            if (sucess)
             {
                 return Ok($"Room ID: {id} Deleted!" );
             }

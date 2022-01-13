@@ -14,6 +14,5 @@ namespace ApplicationCore.Models
 
         public decimal? Rent { get; set; }
 
-    
     }
 }

@@ -8,7 +8,7 @@ using infrastructure.Data;
 
 namespace infrastructure.Migrations
 {
-    [DbContext(typeof(HMSDbContext))]
+    [DbContext(typeof(HotelMangageDb))]
     partial class HotelManagementSystemDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

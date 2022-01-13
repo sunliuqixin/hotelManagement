@@ -10,23 +10,20 @@ namespace ApplicationCore.Models
     {
         public RoomResponseModel()
         {
-            RoomType = new RoomTypeRequestModel();
-            Services = new List<ServiceRequestModel>();
-            Bookings = new List<BookingRequestModel>();
+            RoomType = new RoomTypeResponseModel();
+            Services = new List<ServiceResponseModel>();
+            Bookings = new List<BookingResponseModel>();
         }
-
         public int Id { get; set; }
 
-        //public int? RTCode { get; set; }
+        public int? RTCode { get; set; }
 
         public bool? Status { get; set; }
 
-        public RoomTypeRequestModel RoomType { get; set; }
+        public RoomTypeResponseModel RoomType { get; set; }
 
-        public List<ServiceRequestModel> Services { get; set; }
+        public List<ServiceResponseModel> Services { get; set; }
 
-        public List<BookingRequestModel> Bookings { get; set; }
-
-
+        public List<BookingResponseModel> Bookings { get; set; }
     }
 }

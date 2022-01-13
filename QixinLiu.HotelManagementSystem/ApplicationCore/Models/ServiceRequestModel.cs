@@ -1,5 +1,4 @@
-﻿using ApplicationCore.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +8,7 @@ namespace ApplicationCore.Models
 {
     public class ServiceRequestModel
     {
+       
         public int Id { get; set; }
 
         public int? RoomNO { get; set; }
@@ -19,5 +19,6 @@ namespace ApplicationCore.Models
 
         public DateTime? ServiceDate { get; set; }
 
+       
     }
 }

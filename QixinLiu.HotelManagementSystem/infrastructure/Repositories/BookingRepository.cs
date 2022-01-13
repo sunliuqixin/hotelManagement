@@ -15,7 +15,7 @@ namespace Infrastructure.Repositories
     {
        
 
-        public BookingRepository(HMSDbContext hMSDbContext): base(hMSDbContext)
+        public BookingRepository(HotelMangageDb hMSDbContext): base(hMSDbContext)
         {
         }
 

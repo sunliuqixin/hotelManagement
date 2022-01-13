@@ -50,10 +50,10 @@ namespace QixinLiu.API.HotelManagementSystem.Controllers
         // PUT: api/RoomType/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut]
-        public async Task<IActionResult> EdditRoomType([FromBody]RoomTypeRequestModel roomType)
+        public async Task<IActionResult> EditRoomType([FromBody]RoomTypeRequestModel model)
         {
-            var success = await _roomTypeService.EditRoomType(roomType);
-            if (success) return Ok(roomType);
+            var success = await _roomTypeService.EditRoomType(model);
+            if (success) return Ok(model);
             return BadRequest();
             
         }
@@ -61,7 +61,7 @@ namespace QixinLiu.API.HotelManagementSystem.Controllers
         // POST: api/RoomType
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<IActionResult> AddRoomType(RoomTypeRequestModel roomType)
+        public async Task<IActionResult> AddRoomType([FromBody] RoomTypeRequestModel roomType)
         {
             if(roomType == null) return NoContent();
             var success = await _roomTypeService.AddRoomType(roomType);

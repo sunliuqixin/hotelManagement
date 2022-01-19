@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Stephen's Hotel Management MVC</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col btnPadding">
+                <button> Rooms </button>
+            </div>
+            <div class="col btnPadding">
+                <button href=""> RoomTypes </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col btnPadding">
+                <a class="btn btn-primary btnSize" asp-controller="Booking" asp-action="ListAll"> Services </a>
+            </div>
+            <div class="col btnPadding">
+                <a class="btn btn-primary btnSize" asp-controller="Booking" asp-action="ListAll"> Bookings </a>
+
+            </div>
+        </div>
+    </div>
+</div>

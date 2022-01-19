@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationCore", "Applicat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "infrastructure\Infrastructure.csproj", "{27FA7BBF-9BA1-43A2-A8B1-84FF5588979B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QixinLiu.MVC.HotelManagementSystem", "QixinLiu.MVC.HotelManagementSystem\QixinLiu.MVC.HotelManagementSystem.csproj", "{A03B885D-1DE9-4620-8E58-45F20C0F7B89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{27FA7BBF-9BA1-43A2-A8B1-84FF5588979B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27FA7BBF-9BA1-43A2-A8B1-84FF5588979B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27FA7BBF-9BA1-43A2-A8B1-84FF5588979B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A03B885D-1DE9-4620-8E58-45F20C0F7B89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A03B885D-1DE9-4620-8E58-45F20C0F7B89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A03B885D-1DE9-4620-8E58-45F20C0F7B89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A03B885D-1DE9-4620-8E58-45F20C0F7B89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

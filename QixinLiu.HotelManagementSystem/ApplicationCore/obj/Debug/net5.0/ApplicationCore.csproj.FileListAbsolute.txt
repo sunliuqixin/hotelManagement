@@ -9,3 +9,4 @@ C:\Antra_Hotel\QixinLiu.HotelManagementSystem\ApplicationCore\obj\Debug\net5.0\A
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\ApplicationCore\obj\Debug\net5.0\ApplicationCore.dll
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\ApplicationCore\obj\Debug\net5.0\ref\ApplicationCore.dll
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\ApplicationCore\obj\Debug\net5.0\ApplicationCore.pdb
+C:\Antra_Hotel\QixinLiu.HotelManagementSystem\ApplicationCore\obj\Debug\net5.0\ApplicationCore.csproj.AssemblyReference.cache

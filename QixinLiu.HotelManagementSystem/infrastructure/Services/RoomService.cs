@@ -48,7 +48,6 @@ namespace Infrastructure.Services
 
         public async Task<RoomResponseModel> GetRoomById(int id) 
         {
-
             var room = await _roomRepository.GetByIdAsync(id);
             var model = new RoomResponseModel
             {

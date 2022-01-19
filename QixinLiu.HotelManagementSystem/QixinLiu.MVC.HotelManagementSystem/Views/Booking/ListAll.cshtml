@@ -1,0 +1,27 @@
+﻿@model List<ApplicationCore.Models.BookingResponseModel>
+
+@{ ViewData["Title"] = "Booking"; }
+
+<div class="container-fluid">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Room Number</th>
+                <th>Customer Name</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>  @booking.Id </td>
+                    <td> @booking.RoomNO</td>
+                    <td> @booking.CName</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>

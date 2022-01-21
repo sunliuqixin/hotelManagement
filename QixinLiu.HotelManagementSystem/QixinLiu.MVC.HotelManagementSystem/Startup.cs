@@ -31,6 +31,12 @@ namespace QixinLiu.MVC.HotelManagementSystem
         {
             services.AddControllersWithViews();
 
+            services.AddDbContext<HotelMangageDb>(
+                options => options.UseSqlServer(
+                    Configuration.GetConnectionString
+                    ("HotelManageSystemDbConnection"))
+                );
+
             services.AddScoped<IBookingRepository, BookingRepository>();
             services.AddScoped<IRoomRepository, RoomRepository>();
             services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();
@@ -41,11 +47,7 @@ namespace QixinLiu.MVC.HotelManagementSystem
             services.AddScoped<IRoomTypeService, RoomTypeService>();
             services.AddScoped<IServiceService, ServiceService>();
 
-            services.AddDbContext<HotelMangageDb>(
-                options => options.UseSqlServer(
-                    Configuration.GetConnectionString
-                    ("HotelManageSystemDbConnection"))
-                );
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

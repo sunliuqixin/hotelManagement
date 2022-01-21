@@ -20,7 +20,7 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
         // GET: api/Booking
         [HttpGet]
         public async Task<IActionResult> ListAll()
-        {
+            {
             var lists = await _bookingService.ListAllBookings();
 
             //if (!lists.Any()) return View( );

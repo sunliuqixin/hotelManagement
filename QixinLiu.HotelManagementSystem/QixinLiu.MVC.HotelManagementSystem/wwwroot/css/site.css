@@ -77,3 +77,21 @@ body {
 .btnSize {
     font-size: 35px;
 }
+
+.actionBtn {
+    width: 60px;
+    height: 30px;
+    margin: 0px 8px 0px;
+}
+
+.addBtn{
+    font-size: 15px;
+    width:10%;
+    color: lightgoldenrodyellow;
+    background-color: green;
+    align-content:center;
+    position:fixed;
+    bottom:8vh;
+    left:45vw;
+
+}

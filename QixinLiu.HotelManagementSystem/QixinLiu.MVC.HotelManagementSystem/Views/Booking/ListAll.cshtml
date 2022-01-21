@@ -9,6 +9,7 @@
                 <th>Booking ID</th>
                 <th>Room Number</th>
                 <th>Customer Name</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -16,12 +17,15 @@
             @foreach (var booking in Model)
             {
                 <tr>
-                    <td>  @booking.Id </td>
+                    <td> @booking.Id </td>
                     <td> @booking.RoomNO</td>
                     <td> @booking.CName</td>
+                    <td> <button class="actionBtn"> Edit </button> <button class="actionBtn"> Delete </button></td>
                 </tr>
 
             }
         </tbody>
     </table>
 </div>
+
+<button class="btn addBtn">Add a New Booking</button>

@@ -1,0 +1,25 @@
+﻿@model dynamic
+
+<button type="button" class="actionBtn" data-toggle="modal" data-target="#@("delete" + Model.Id)">Delete</button>
+
+<div class="modal" id="@("delete" + Model.Id)" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Alert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are sure sure to delete booking ID : @Model.Id.</p>
+            </div>
+            <div class="modal-footer">
+                <form asp-controller="Booking" asp-action="Delete" asp-route-id="@Model.Id">
+                    <button type="submit" class="btn btn-primary">Comfirm</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

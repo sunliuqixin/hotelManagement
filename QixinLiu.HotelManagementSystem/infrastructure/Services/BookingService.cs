@@ -28,7 +28,7 @@ namespace Infrastructure.Services
 
             var newBooking = new Booking
             {
-                Id = booking.Id,
+                
                 RoomNO = booking.RoomNO,
                 CName = booking.CName,
                 Address = booking.Address,

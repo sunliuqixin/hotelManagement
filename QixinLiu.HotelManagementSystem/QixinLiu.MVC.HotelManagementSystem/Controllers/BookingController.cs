@@ -17,20 +17,18 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
             _bookingService = bookingService;
         }
 
-        // GET: api/Booking
         [HttpGet]
         public async Task<IActionResult> ListAll()
             {
             var lists = await _bookingService.ListAllBookings();
 
-            //if (!lists.Any()) return View( );
+            if (!lists.Any()) return View( );
 
             return View(lists);
         }
 
-        // GET: api/Booking/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetBooking(int id)
+        public async Task<IActionResult> GetDetails(int id)
         {
             var booking = await _bookingService.GetBookingById(id);
 
@@ -39,45 +37,41 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
             return View(booking);
         }
 
-        // PUT: api/Booking/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut]
-        public async Task<IActionResult> EditBooking(int id, int? roomNO,
+
+        [HttpGet]
+        public async Task<IActionResult> Book(int id)
+        {
+            BookingResponseModel booking;
+            if (id != -1)
+            {
+                booking = await _bookingService.GetBookingById(id);
+            }
+            else
+            {
+                booking = new BookingResponseModel
+                {
+                    Id = -1,
+                    RoomNO = 1,
+                    CName = "Customer Name",
+                    Address = "Customer Address",
+                    Phone = "999-999-9999",
+                    Email = "CustomerEmail@mail.com",
+                    CheckIn = DateTime.Now,
+                    TotalPersons = 1,
+                    BookingDays = 1,
+                    Advance = 0
+                };
+            }
+
+            return View(booking);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Book(int id, int? roomNO,
                     string? cName, string? address, string? phone,
                     string? email, DateTime? checkIn, int? totalPersons, 
                     int? bookingDays, decimal? advance)
         {
-
-            var bookingModel = new BookingRequestModel
-            {
-                Id = id,
-                RoomNO = roomNO,
-                CName = cName,
-                Address = address,
-                Phone = phone,
-                Email = email,
-                CheckIn = checkIn,
-                TotalPersons = totalPersons,
-                BookingDays = bookingDays,
-                Advance = advance
-            };
-
-            var sucess = await _bookingService.EditBooking(bookingModel);
-
-            if (sucess) return RedirectToAction("SuccessPage", new {viewName = "Edit"});
-
-            return View();
-        }
-
-        // POST: api/Booking
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<IActionResult> AddBooking(int? roomNO,
-                    string? cName, string? address, string? phone,
-                    string? email, DateTime? checkIn, int? totalPersons,
-                    int? bookingDays, decimal? advance)
-        {
-
             var bookingModel = new BookingRequestModel
             {
                 RoomNO = roomNO,
@@ -91,20 +85,35 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
                 Advance = advance
             };
 
-            var sucess = await _bookingService.AddBooking(bookingModel);
+            if (id != -1)
+            {
+                bookingModel.Id = id;
 
-            if (sucess) return RedirectToAction("SuccessPage", new { viewName = "Add" });
+                var sucess = await _bookingService.EditBooking(bookingModel);
+
+                if (sucess) return RedirectToAction("SuccessPage", 
+                    "Home", new { viewName = "Edit Booking" }); 
+            }
+            else
+            {
+                var sucess = await _bookingService.AddBooking(bookingModel);
+
+                if (sucess) return RedirectToAction("SuccessPage", 
+                    "Home", new { viewName = "Add Booking" });
+            }
 
             return View();
+
         }
 
-        // DELETE: api/Booking/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBooking(int id)
+ 
+        [HttpPost("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
             var sucess = await _bookingService.DeleteBooking(id);
 
-            if (sucess) return RedirectToAction("SuccessPage", "Home", new { viewName = "Delete" });
+            if (sucess) return RedirectToAction("SuccessPage", 
+                "Home", new { viewName = "Delete Booking" });
 
             return View();
         }

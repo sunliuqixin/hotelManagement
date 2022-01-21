@@ -20,7 +20,12 @@
                     <td> @booking.Id </td>
                     <td> @booking.RoomNO</td>
                     <td> @booking.CName</td>
-                    <td> <button class="actionBtn"> Edit </button> <button class="actionBtn"> Delete </button></td>
+                    <td> 
+                        <a asp-controller="Booking" asp-action="Book" asp-route-Id="@booking.Id"> 
+                            <button class="actionBtn"> Edit </button> 
+                        </a> 
+                        <partial name="_DeleteAlert" model="@booking"/>
+                    </td>
                 </tr>
 
             }
@@ -28,4 +33,6 @@
     </table>
 </div>
 
-<button class="btn addBtn">Add a New Booking</button>
+<a asp-controller="Booking" asp-action="Book" asp-route-Id=-1>
+    <button class="btn addBtn">Add a New Booking</button>
+</a>

@@ -93,5 +93,9 @@ body {
     position:fixed;
     bottom:8vh;
     left:45vw;
+}
 
+.containerBorder {
+    border-style: solid;
+    border-width: 1px;
 }

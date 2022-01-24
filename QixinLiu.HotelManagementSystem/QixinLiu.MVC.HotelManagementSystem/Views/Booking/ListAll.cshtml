@@ -17,7 +17,9 @@
             @foreach (var booking in Model)
             {
                 <tr>
-                    <td> @booking.Id </td>
+                    <td> 
+                        <a asp-controller="Booking" asp-action="GetDetails" asp-route-Id="@booking.Id"><b><u>@booking.Id</u></b></a>
+                    </td>
                     <td> @booking.RoomNO</td>
                     <td> @booking.CName</td>
                     <td> 

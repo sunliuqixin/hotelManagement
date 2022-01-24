@@ -151,3 +151,4 @@ C:\Antra_Hotel\QixinLiu.HotelManagementSystem\QixinLiu.MVC.HotelManagementSystem
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\QixinLiu.MVC.HotelManagementSystem\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\QixinLiu.MVC.HotelManagementSystem\obj\Debug\net5.0\Razor\Views\Shared\_DeleteAlert.cshtml.g.cs
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\QixinLiu.MVC.HotelManagementSystem\obj\Debug\net5.0\Razor\Views\Booking\Book.cshtml.g.cs
+C:\Antra_Hotel\QixinLiu.HotelManagementSystem\QixinLiu.MVC.HotelManagementSystem\obj\Debug\net5.0\Razor\Views\Booking\GetDetails.cshtml.g.cs

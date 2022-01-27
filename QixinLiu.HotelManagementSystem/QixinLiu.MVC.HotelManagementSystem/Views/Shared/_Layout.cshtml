@@ -18,10 +18,14 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        
+
+                        <a class="nav-link text-capitalize" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Room" asp-action="AllRooms">Room</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="RoomType" asp-action="AllRoomTypes">Room Type</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Booking" asp-action="AllBookings">Booking</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Service" asp-action="AllServices">Service</a>
+
+
 
                     </ul>
                 </div>

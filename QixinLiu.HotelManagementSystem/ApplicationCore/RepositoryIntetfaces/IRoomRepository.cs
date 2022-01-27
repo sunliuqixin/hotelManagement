@@ -13,5 +13,7 @@ namespace ApplicationCore.RepositoryIntetfaces
     {
         Task<Room> GetRoomDetails(int id);
         //Task AddAsync(Room room);
+
+        Task<List<Room>> ListAll();
     }
 }

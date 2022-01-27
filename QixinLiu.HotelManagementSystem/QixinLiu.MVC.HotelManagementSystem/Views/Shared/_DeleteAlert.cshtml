@@ -1,8 +1,8 @@
 ﻿@model dynamic
 
-<button type="button" class="actionBtn" data-toggle="modal" data-target="#@("delete" + Model.Id)">Delete</button>
+<button type="button" class="actionBtn" data-toggle="modal" data-target="#@("delete" + Model.CtrName + Model.Id)">Delete</button>
 
-<div class="modal" id="@("delete" + Model.Id)" tabindex="-1" role="dialog">
+<div class="modal" id="@("delete" + Model.CtrName + Model.Id)" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,13 +12,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Are sure sure to delete booking ID : @Model.Id.</p>
+                <p>Are sure sure to delete @Model.CtrName ID : @Model.Id.</p>
             </div>
             <div class="modal-footer">
-                <form asp-controller="Booking" asp-action="Delete" asp-route-id="@Model.Id">
+                <form asp-controller="@Model.CtrName" asp-action="Delete" method="post" asp-route-id="@Model.Id">
                     <button type="submit" class="btn btn-primary">Comfirm</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                
             </div>
         </div>
     </div>

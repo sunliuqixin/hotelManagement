@@ -18,7 +18,7 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ListAll()
+        public async Task<IActionResult> AllBookings()
             {
             var lists = await _bookingService.ListAllBookings();
 
@@ -27,8 +27,9 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
             return View(lists);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetDetails(int id)
+        [HttpGet]
+        [Route("Booking/Details/{id:int}")]
+        public async Task<IActionResult> Details(int id)
         {
             var booking = await _bookingService.GetBookingById(id);
 
@@ -107,7 +108,8 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
         }
 
  
-        [HttpPost("{id}")]
+        [HttpPost]
+        [Route("Booking/Delete/{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
             var sucess = await _bookingService.DeleteBooking(id);
@@ -117,7 +119,6 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
 
             return View();
         }
-
-       
+  
     }
 }

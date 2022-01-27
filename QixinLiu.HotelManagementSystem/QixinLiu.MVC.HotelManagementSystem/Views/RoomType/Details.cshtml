@@ -1,0 +1,32 @@
+﻿@model ApplicationCore.Models.RoomTypeResponseModel
+
+@{ ViewData["Title"] = "RoomType"; }
+
+<div class="container containerBorder">
+    <div class="row">
+        <div class="col containerBorder">
+            <b>Room Type ID</b>
+        </div>
+        <div class="col containerBorder">
+            <p>@Model.Id</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col containerBorder">
+            <b>Room Type Name</b>
+        </div>
+        <div class="col containerBorder">
+            <p>@Model.RTDESC</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col containerBorder">
+            <b>Rent</b>
+        </div>
+        <div class="col containerBorder">
+            <p>@Model.Rent</p>
+        </div>
+    </div>
+</div>

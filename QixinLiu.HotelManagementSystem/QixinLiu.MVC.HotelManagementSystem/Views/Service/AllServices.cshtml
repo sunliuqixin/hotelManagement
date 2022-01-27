@@ -1,0 +1,43 @@
+﻿@model List<ApplicationCore.Models.ServiceResponseModel>
+
+@{ ViewData["Title"] = "Service"; }
+
+<div class="container-fluid">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Service ID</th>
+                <th>Room Number</th>
+                <th>Service Description</th>
+                <th>Service Charges</th>
+                <th>Service Date</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var service in Model)
+            {
+            <tr>
+                <td>
+                    <a asp-controller="Service" asp-action="Details" asp-route-Id="@service.Id"><b><u>@service.Id</u></b></a>
+                </td>
+                <td> @service.RoomNO</td>
+                <td> @service.SDESC</td>
+                <td> @service.Amount</td>
+                <td> @service.ServiceDate</td>
+                <td>
+                    <a asp-controller="Service" asp-action="Change" asp-route-Id="@service.Id">
+                        <button class="actionBtn"> Edit </button>
+                    </a>
+                    <partial name="_DeleteAlert" model='new { Id = service.Id, CtrName = "Service"}' />
+
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<a asp-controller="Service" asp-action="Change" asp-route-Id=-1>
+    <button class="btn addBtn">Add a New Service</button>
+</a>

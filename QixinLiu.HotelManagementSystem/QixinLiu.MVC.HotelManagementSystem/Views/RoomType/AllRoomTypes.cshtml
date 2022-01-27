@@ -1,0 +1,40 @@
+﻿@model List<ApplicationCore.Models.RoomTypeResponseModel>
+
+@{ ViewData["Title"] = "RoomType"; }
+
+<div class="container-fluid">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Room Type ID</th>
+                <th>Room Type Name</th>
+                <th>Rent</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var rt in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="RoomType" asp-action="Details" asp-route-Id="@rt.Id"><b><u>@rt.Id</u></b></a>
+                    </td>
+                    <td> @rt.RTDESC</td>
+                    <td> @rt.Rent</td>
+                    <td>
+                        <a asp-controller="RoomType" asp-action="Change" asp-route-Id="@rt.Id">
+                            <button class="actionBtn"> Edit </button>
+                        </a>
+                        <partial name="_DeleteAlert" model='new { Id = rt.Id, CtrName = "RoomType"}' />
+
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
+<a asp-controller="RoomType" asp-action="Change" asp-route-Id=-1>
+    <button class="btn addBtn">Add a New Room Type</button>
+</a>

@@ -1,0 +1,22 @@
+﻿@model ApplicationCore.Models.RoomResponseModel
+
+<form asp-controller="Room" asp-action="Change" asp-route-id="@Model.Id" method="post">
+
+
+    <div class="form-group">
+        <label asp-for="RTCode" class="control-label">Room Type Code</label>
+        <input type="number" asp-for="RTCode" class="form-control" placeholder="@Model.RTCode">
+    </div>
+    <div class="form-group">
+        <label asp-for="Status" class="control-label">Available Status :</label>
+        
+        <select asp-for="Status" class="form-control">
+            <option value="false" style=" background-color: crimson">Occupied</option>
+            <option value="true"  style=" background-color: darkseagreen">Available</option>
+        </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+

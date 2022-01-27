@@ -18,10 +18,4 @@
     <ProjectReference Include="..\infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Service\" />
-    <Folder Include="Views\Rooms\" />
-    <Folder Include="Views\RoomType\" />
-  </ItemGroup>
-
 </Project>

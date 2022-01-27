@@ -3,26 +3,27 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to Stephen's Hotel Management MVC</h1>
+    <h1 class="display-4">Welcome to Qixin's Hotel Management MVC</h1>
 
     <div class="container">
         <div class="row">
-            <div class="btn btn-primary btnSize" >
-                <button> Rooms </button>
+            <div class="col btnPadding">
+                <a class="btn btn-primary btnSize" asp-controller="Room" asp-action="AllRooms"> Rooms </a>
             </div>
-            <div class="btn btn-primary btnSize">
-                <button href=""> RoomTypes </button>
+            <div class="col btnPadding">
+                <a class="btn btn-primary btnSize" asp-controller="RoomType" asp-action="AllRoomTypes"> Room Types </a>
             </div>
         </div>
 
         <div class="row">
             <div class="col btnPadding">
-                <a class="btn btn-primary btnSize" asp-controller="Booking" asp-action="ListAll"> Services </a>
+                <a class="btn btn-primary btnSize" asp-controller="Booking" asp-action="AllBookings"> Bookings </a>
             </div>
-            <div class="col btnPadding">
-                <a class="btn btn-primary btnSize" asp-controller="Booking" asp-action="ListAll"> Bookings </a>
 
+            <div class="col btnPadding">
+                <a class="btn btn-primary btnSize" asp-controller="Service" asp-action="AllServices"> Services </a>
             </div>
+
         </div>
     </div>
 </div>

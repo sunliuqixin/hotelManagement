@@ -27,6 +27,11 @@ namespace Infrastructure.Repositories
             
         }
 
+        public async Task<List<Room>> ListAll()
+        {
+            return await _dbContext.Rooms.Include(r => r.RoomType).ToListAsync();
+        }
+
         public async Task<Room> GetRoomDetails(int id)
         {
             var room = await _dbContext.Rooms

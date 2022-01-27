@@ -14,7 +14,7 @@ namespace ApplicationCore.Entities
 
         public int? RTCode { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
 
         public RoomType RoomType { get; set; }
 

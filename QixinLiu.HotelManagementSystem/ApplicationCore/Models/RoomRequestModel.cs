@@ -12,6 +12,6 @@ namespace ApplicationCore.Models
 
         public int? RTCode { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
     }
 }

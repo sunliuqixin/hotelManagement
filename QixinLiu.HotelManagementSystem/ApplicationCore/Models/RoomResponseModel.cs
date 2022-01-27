@@ -20,6 +20,8 @@ namespace ApplicationCore.Models
 
         public bool? Status { get; set; }
 
+        public string RT { get; set; }
+
         public RoomTypeResponseModel RoomType { get; set; }
 
         public List<ServiceResponseModel> Services { get; set; }

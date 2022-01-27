@@ -55,6 +55,8 @@ namespace Infrastructure.Services
                 RTCode = room.RTCode,
                 Status = room.Status
             };
+
+
             return model;
         }
 
@@ -98,6 +100,7 @@ namespace Infrastructure.Services
             var roomDetails = new RoomResponseModel
             {
                 Id = room.Id,
+                RTCode = room.RTCode,
                 Status = room.Status
             };
 
@@ -145,7 +148,7 @@ namespace Infrastructure.Services
 
         public async Task<IEnumerable<RoomResponseModel>> ListRooms()
         {
-            var rooms = await _roomRepository.ListAllAsync();
+            var rooms = await _roomRepository.ListAll();
             List<RoomResponseModel> list = new List<RoomResponseModel>();
             foreach (var r in rooms)
             {
@@ -153,7 +156,8 @@ namespace Infrastructure.Services
                 {
                     Id = r.Id,
                     RTCode = r.RTCode,
-                    Status = r.Status
+                    Status = r.Status,
+                    RT = r.RoomType.RTDESC
                 });
             }
             return list;

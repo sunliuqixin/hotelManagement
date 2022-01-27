@@ -1,0 +1,77 @@
+﻿@model ApplicationCore.Models.RoomResponseModel
+
+@{ ViewData["Title"] = "Room"; }
+
+<div class="container containerBorder">
+    <div class="row">
+        <div class="col containerBorder">
+            <b>Room ID :</b>
+        </div>
+        <div class="col containerBorder">
+            <p>@Model.Id</p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col containerBorder">
+            <b>Room Type Code :</b>
+        </div>
+        <div class="col containerBorder">
+            <p>@Model.RTCode</p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col containerBorder">
+            <b>Room Type :</b>
+        </div>
+        <div class="col containerBorder">
+            <p>@Model.RoomType.RTDESC</p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col containerBorder">
+            <b>Available Status :</b>
+        </div>
+        <div class="col containerBorder">
+            <p>@Model.Status</p>
+        </div>
+    </div>
+
+
+    @foreach (var service in Model.Services)
+    {
+
+        <div class="row">
+            <div class="col containerBorder">
+                <b>Service :</b>
+            </div>
+            <div class="col containerBorder">
+                <a>@service.Id</a>
+            </div>
+        </div>
+    }
+
+
+    @foreach (var booking in Model.Bookings)
+    {
+
+        <div class="row">
+            <div class="col containerBorder">
+                <b>Booking :</b>
+            </div>
+            <div class="col containerBorder">
+                <a>@booking.Id</a>
+            </div>
+        </div>
+    }
+</div>
+
+
+   
+
+

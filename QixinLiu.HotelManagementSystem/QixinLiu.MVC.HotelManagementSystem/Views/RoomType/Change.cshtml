@@ -1,0 +1,18 @@
+﻿@model ApplicationCore.Models.RoomTypeResponseModel
+
+<form asp-controller="RoomType" asp-action="Change" asp-route-id="@Model.Id" method="post">
+
+
+    <div class="form-group">
+        <label asp-for="RTDESC" class="control-label">Room Type Name</label>
+        <input type="text" asp-for="RTDESC" class="form-control" placeholder="@Model.RTDESC">
+    </div>
+    <div class="form-group">
+        <label asp-for="Rent" class="control-label">Rent</label>
+        <input type="number" step="0.01" asp-for="Rent" class="form-control" placeholder="@Model.Rent">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+

@@ -1,0 +1,51 @@
+﻿@model ApplicationCore.Models.ServiceResponseModel
+
+@{ ViewData["Title"] = "Service"; }
+
+<div class="container containerBorder">
+    <div class="row">
+        <div class="col containerBorder">
+            <b>Service ID</b>
+        </div>
+        <div class="col containerBorder">
+            <p>@Model.Id</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col containerBorder">
+            <b>Room Number</b>
+        </div>
+        <div class="col containerBorder">
+            <p>@Model.RoomNO</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col containerBorder">
+            <b>Service Description</b>
+        </div>
+        <div class="col containerBorder">
+            <p>@Model.SDESC</p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col containerBorder">
+            <b>Service Charges</b>
+        </div>
+        <div class="col containerBorder">
+            <p>@Model.Amount</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col containerBorder">
+            <b>Service Date</b>
+        </div>
+        <div class="col containerBorder">
+            <p>@Model.ServiceDate</p>
+        </div>
+    </div>
+</div>

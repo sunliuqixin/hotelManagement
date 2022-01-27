@@ -75,8 +75,15 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
 
                 var sucess = await _roomService.EditRoom(model);
 
-                if (sucess) return RedirectToAction("SuccessPage",
+                if (sucess) { 
+                    return RedirectToAction("SuccessPage",
                     "Home", new { viewName = "Edit Room" });
+                }
+                else
+                {
+                    return RedirectToAction("FailedPage",
+                    "Home", new { viewName = "Edit Room" });
+                }
             }
             else
             {
@@ -86,7 +93,8 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
                     "Home", new { viewName = "Add Room" });
             }
 
-            return View();
+            return RedirectToAction("FailedPage",
+                    "Home", new { viewName = "Add Room" });
 
         }
 
@@ -100,7 +108,8 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
             if (sucess) return RedirectToAction("SuccessPage",
                 "Home", new { viewName = "Delete Room" });
 
-            return View();
+            return RedirectToAction("FailedPage",
+                    "Home", new { viewName = "Delete Room" });
         }
     }
 }

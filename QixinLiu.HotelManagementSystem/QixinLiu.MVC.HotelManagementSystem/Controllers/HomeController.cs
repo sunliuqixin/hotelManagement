@@ -37,5 +37,12 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
             
             return View();
         }
+
+        public IActionResult FailedPage(string viewName)
+        {
+            ViewBag.viewName = viewName;
+
+            return View();
+        }
     }
 }

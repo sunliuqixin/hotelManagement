@@ -22,5 +22,6 @@ namespace ApplicationCore.ServicesInterfaces
         Task<RoomResponseModel> GetRoomDetails(int id);
 
         Task<RoomResponseModel> GetRoomById(int id);
+        Task<bool> BookRoom(int? roomNO);
     }
 }

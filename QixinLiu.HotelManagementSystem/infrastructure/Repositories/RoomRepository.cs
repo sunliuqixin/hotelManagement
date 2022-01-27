@@ -41,5 +41,23 @@ namespace Infrastructure.Repositories
                 .FirstOrDefaultAsync(r => r.Id == id);
             return room;
         }
+
+        public async Task<bool> CheckAvailability(int? id)
+        {
+            var room = await _dbContext.Rooms.FirstOrDefaultAsync(r => r.Id == id);
+            return room.Status;
+        }
+
+        //public async Task<bool> BookRoom(int id)
+        //{
+        //    var status = await _dbContext.Rooms.FirstOrDefault(r => r.Id == id).Status;
+        //    if (status)
+        //    {
+        //        await _dbContext.SaveChangesAsync();
+        //        return true;
+        //    }
+
+        //    return false;
+        //}
     }
 }

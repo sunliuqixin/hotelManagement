@@ -161,3 +161,4 @@ C:\Antra_Hotel\QixinLiu.HotelManagementSystem\QixinLiu.MVC.HotelManagementSystem
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\QixinLiu.MVC.HotelManagementSystem\obj\Debug\net5.0\Razor\Views\Service\AllServices.cshtml.g.cs
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\QixinLiu.MVC.HotelManagementSystem\obj\Debug\net5.0\Razor\Views\Service\Change.cshtml.g.cs
 C:\Antra_Hotel\QixinLiu.HotelManagementSystem\QixinLiu.MVC.HotelManagementSystem\obj\Debug\net5.0\Razor\Views\Service\Details.cshtml.g.cs
+C:\Antra_Hotel\QixinLiu.HotelManagementSystem\QixinLiu.MVC.HotelManagementSystem\obj\Debug\net5.0\Razor\Views\Home\FailedPage.cshtml.g.cs

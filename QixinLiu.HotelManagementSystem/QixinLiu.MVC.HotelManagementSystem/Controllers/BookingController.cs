@@ -11,10 +11,12 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
     public class BookingController : Controller
     {
         private readonly IBookingService _bookingService;
+        private readonly IRoomService _roomService;
 
-        public BookingController(IBookingService bookingService)
+        public BookingController(IBookingService bookingService, IRoomService roomService)
         {
             _bookingService = bookingService;
+            _roomService = roomService;
         }
 
         [HttpGet]
@@ -93,17 +95,24 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
                 var sucess = await _bookingService.EditBooking(bookingModel);
 
                 if (sucess) return RedirectToAction("SuccessPage", 
-                    "Home", new { viewName = "Edit Booking" }); 
+                    "Home", new { viewName = "Edit Booking" });
+
+                return RedirectToAction("FailedPage",
+                    "Home", new { viewName = "Edit Booking" });
             }
             else
             {
                 var sucess = await _bookingService.AddBooking(bookingModel);
+                var bookRoom = await _roomService.BookRoom(roomNO);
 
                 if (sucess) return RedirectToAction("SuccessPage", 
                     "Home", new { viewName = "Add Booking" });
+
+                return RedirectToAction("FailedPage",
+                    "Home", new { viewName = "Add Booking" });
             }
 
-            return View();
+            
 
         }
 
@@ -117,7 +126,8 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
             if (sucess) return RedirectToAction("SuccessPage", 
                 "Home", new { viewName = "Delete Booking" });
 
-            return View();
+            return RedirectToAction("FailedPage",
+                    "Home", new { viewName = "Delete Booking" });
         }
   
     }

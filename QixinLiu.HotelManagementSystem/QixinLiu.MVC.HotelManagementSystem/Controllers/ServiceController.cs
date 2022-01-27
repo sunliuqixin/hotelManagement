@@ -65,14 +65,14 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Change(int id, int? roomNo,  string? sdesc, decimal? amount, DateTime? dateTime)
+        public async Task<IActionResult> Change(int id, int? roomNo,  string? sdesc, decimal? amount, DateTime? serviceDate)
         {
             var model = new ServiceRequestModel
             {
                 RoomNO = roomNo,
                 SDESC = sdesc,
                 Amount = amount,
-                ServiceDate = dateTime
+                ServiceDate = serviceDate
             };
 
             if (id != -1)
@@ -83,6 +83,9 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
 
                 if (sucess) return RedirectToAction("SuccessPage",
                     "Home", new { viewName = "Edit Service" });
+
+                return RedirectToAction("FailedPage",
+                    "Home", new { viewName = "Edit Service" });
             }
             else
             {
@@ -90,9 +93,10 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
 
                 if (sucess) return RedirectToAction("SuccessPage",
                     "Home", new { viewName = "Add Service" });
-            }
 
-            return View();
+                return RedirectToAction("FailedPage",
+                    "Home", new { viewName = "Add Service" });
+            }
 
         }
 
@@ -106,7 +110,8 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
             if (sucess) return RedirectToAction("SuccessPage",
                 "Home", new { viewName = "Delete Service" });
 
-            return View();
+            return RedirectToAction("FailedPage",
+                    "Home", new { viewName = "Delete Service" });
         }
     }
 }

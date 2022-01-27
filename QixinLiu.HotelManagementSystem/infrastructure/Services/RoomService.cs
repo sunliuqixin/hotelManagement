@@ -75,12 +75,10 @@ namespace Infrastructure.Services
         {
             if (room.RTCode != null)
             {
-                Room editRoom = new Room
-                {
-                    Id = room.Id,
-                    RTCode = room.RTCode,
-                    Status = room.Status
-                };
+                var editRoom = await _roomRepository.GetByIdAsync(room.Id);
+
+                editRoom.RTCode = room.RTCode;
+                editRoom.Status = room.Status;
 
                 var success = await _roomRepository.UpdateAsync(editRoom);
                 return true;
@@ -161,6 +159,22 @@ namespace Infrastructure.Services
                 });
             }
             return list;
+        }
+
+        public async Task<bool> BookRoom(int? roomNO)
+        {
+            var num = (roomNO != null) ? (int)roomNO : -1;
+            
+            var editRoom = await _roomRepository.GetByIdAsync(num);
+
+            if (editRoom == null) return false;
+
+            editRoom.Status = false;
+
+            await _roomRepository.UpdateAsync(editRoom);
+                
+            return true;
+      
         }
     }
 }

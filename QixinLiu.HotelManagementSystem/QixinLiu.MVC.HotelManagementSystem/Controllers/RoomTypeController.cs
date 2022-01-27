@@ -77,6 +77,9 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
 
                 if (sucess) return RedirectToAction("SuccessPage",
                     "Home", new { viewName = "Edit Room Type" });
+
+                return RedirectToAction("FailedPage",
+                    "Home", new { viewName = "Edit Room Type" });
             }
             else
             {
@@ -84,9 +87,12 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
 
                 if (sucess) return RedirectToAction("SuccessPage",
                     "Home", new { viewName = "Add Room Type" });
+
+                return RedirectToAction("FailedPage",
+                   "Home", new { viewName = "Add Room Type" });
             }
 
-            return View();
+           
 
         }
 
@@ -100,7 +106,8 @@ namespace QixinLiu.MVC.HotelManagementSystem.Controllers
             if (sucess) return RedirectToAction("SuccessPage",
                 "Home", new { viewName = "Delete Room Type" });
 
-            return View();
+            return RedirectToAction("FailedPage",
+                   "Home", new { viewName = "Delete Room Type" });
         }
     }
 }

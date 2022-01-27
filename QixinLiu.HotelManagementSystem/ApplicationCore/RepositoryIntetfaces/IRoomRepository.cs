@@ -12,8 +12,11 @@ namespace ApplicationCore.RepositoryIntetfaces
     public interface IRoomRepository : IAsyncRepository<Room>
     {
         Task<Room> GetRoomDetails(int id);
-        //Task AddAsync(Room room);
+        
+        Task<bool> CheckAvailability(int? id);
 
         Task<List<Room>> ListAll();
+
+        //Task<bool> BookRoom(int id);
     }
 }

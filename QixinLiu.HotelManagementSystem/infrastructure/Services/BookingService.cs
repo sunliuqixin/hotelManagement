@@ -15,16 +15,25 @@ namespace Infrastructure.Services
     public class BookingService : IBookingService
     {
         protected readonly IBookingRepository _bookingRepository;
+        protected readonly IRoomRepository _roomRepository;
 
-        public BookingService(IBookingRepository bookingRepository)
+        public BookingService(IBookingRepository bookingRepository, IRoomRepository roomRepository)
         {
             _bookingRepository = bookingRepository;
+            _roomRepository = roomRepository;
         }
 
 
         public async Task<bool> AddBooking(BookingRequestModel booking)
         {
             if (booking == null) return false;
+            var isAvailable = await _roomRepository.CheckAvailability(booking.RoomNO);
+
+            if (!isAvailable)
+            {
+                Console.WriteLine("The Room is Occupied!");
+                return false;
+            }
 
             var newBooking = new Booking
             {

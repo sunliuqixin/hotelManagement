@@ -20,32 +20,5 @@ namespace Infrastructure.Repositories
         }
 
 
-        //public async Task AddBooking(Booking booking)
-        //{
-        //    await _dbContext.Bookings.AddAsync(booking);
-        //    Console.WriteLine("add a booking");
-        //}
-
-        //public async Task DeleteBooking(int id)
-        //{
-        //    var booking = await _dbContext.Bookings.FindAsync()
-        //    //await _dbContext.Bookings.Remove(b => b.id == id);
-        //}
-
-        //public Task EdditBooking(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Task<IEnumerable<Booking>> ListBooking()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //Task<IEnumerable<Booking>> IBookingRepository.ListBooking()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
     }
 }
